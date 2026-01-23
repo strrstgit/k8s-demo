@@ -6,7 +6,7 @@ pipeline {
   }
 
   environment {
-    IMAGE_NAME = "docker.io/strrstgit/demo-app"
+    IMAGE_NAME = "docker.io/strrst30/demo-app"
     TAG = "${BUILD_NUMBER}"
   }
 

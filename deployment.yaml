@@ -16,6 +16,6 @@ spec:
       serviceAccountName: jenkins-deployer
       containers:
         - name: demo-app
-          image: docker.io/strrstgit/demo-app:latest
+          image: docker.io/strrst30/demo-app:latest
           ports:
             - containerPort: 80
