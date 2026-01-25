@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      serviceAccountName: jenkins-deployer
+      containers:
+        - name: demo-app
+          image: docker.io/strrst30/demo-app:latest
+          ports:
+            - containerPort: 80
