@@ -17,11 +17,11 @@ spec:
           service:
             name: nginx-service-v1
             port:
-              number: 8080
+              number: 8181
       - path: /v2
         pathType: Prefix
         backend:
           service:
             name: nginx-service-v2
             port:
-              number: 9090
+              number: 9191
