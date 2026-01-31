@@ -15,7 +15,7 @@ spec:
         app: nginx
     spec:
       nodeSelector:
-        role: app2    
+        role: app    
     spec:
       containers:
       - name: nginx
