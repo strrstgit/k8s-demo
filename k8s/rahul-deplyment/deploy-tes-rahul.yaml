@@ -21,9 +21,7 @@ spec:
               preference:
                 matchExpressions:
                   - key: zone
-                    operator: In
-                    values:
-                      - zone-a
+                  
     spec:
       containers:
       - name: nginx
