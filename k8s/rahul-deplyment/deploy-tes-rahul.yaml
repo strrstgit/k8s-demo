@@ -21,6 +21,9 @@ spec:
               preference:
                 matchExpressions:
                   - key: zone
+                    operator: In
+                    values:
+                      - zone-b
 
     spec:
       containers:
