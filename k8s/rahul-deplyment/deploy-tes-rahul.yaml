@@ -14,9 +14,12 @@ spec:
       labels:
         app: nginx
     spec:
-      nodeName: worker02.example.com    
+  template:
+    spec:
+      nodeSelector:
+        role: app    
     spec:
       containers:
       - name: nginx
-        image: nginx:1.17      
+        image: nginx:1.16      
        
