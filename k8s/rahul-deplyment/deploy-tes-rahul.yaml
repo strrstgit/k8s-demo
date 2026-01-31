@@ -16,16 +16,16 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: zone
-                operator: In
-                values:
-                - zone-b
-           
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: zone
+                    operator: In
+                    values:
+                      - zone-a
     spec:
       containers:
       - name: nginx
-        image: nginx:1.13      
+        image: nginx:1.14      
        
