@@ -22,7 +22,7 @@ spec:
               - key: zone
                 operator: In
                 values:
-                - zone-b
+                - zone-a
     spec:
       containers:
       - name: nginx
