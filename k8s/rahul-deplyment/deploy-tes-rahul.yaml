@@ -21,9 +21,9 @@ spec:
               preference:
                 matchExpressions:
                   - key: zone
-                  
+
     spec:
       containers:
       - name: nginx
-        image: nginx:1.14      
+        image: nginx:1.13      
        
