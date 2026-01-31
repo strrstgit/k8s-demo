@@ -14,10 +14,8 @@ spec:
       labels:
         app: nginx
     spec:
-      template:
-        spec:
-          nodeSelector:
-            role: app    
+      nodeSelector:
+        role: app    
     spec:
       containers:
       - name: nginx
