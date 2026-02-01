@@ -18,6 +18,10 @@ spec:
           - labelSelector:
               matchExpressions:
               - key: zone
+                operator: In
+                values:
+                - zone-a
+                - zone-b
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: redis-server
