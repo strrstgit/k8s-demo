@@ -17,10 +17,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - app
+              - key: zone
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: redis-server

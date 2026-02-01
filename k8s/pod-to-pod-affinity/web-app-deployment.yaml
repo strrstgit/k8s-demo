@@ -17,19 +17,13 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - app
+              - key: zone
             topologyKey: "kubernetes.io/hostname"
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - app
+              - key: zone
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: web-app
