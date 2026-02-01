@@ -5,10 +5,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
+  replicas: 1
   template:
     metadata:
       labels:
@@ -23,8 +20,37 @@ spec:
                 operator: In
                 values:
                 - zone-a
-    
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app: nginx
+            topologyKey: kubernetes.io/hostname
       containers:
       - name: nginx
-        image: nginx:1.13      
+        image: nginx
+
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: nginx
+#   template:
+#     metadata:
+#       labels:
+#         app: nginx
+#     spec:
+#       affinity:
+#         nodeAffinity:
+#           requiredDuringSchedulingIgnoredDuringExecution:
+#             nodeSelectorTerms:
+#             - matchExpressions:
+#               - key: zone
+#                 operator: In
+#                 values:
+#                 - zone-a
+    
+#       containers:
+#       - name: nginx
+#         image: nginx:1.13      
        
