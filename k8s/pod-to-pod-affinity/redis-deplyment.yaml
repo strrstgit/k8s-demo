@@ -3,26 +3,26 @@ kind: Deployment
 metadata:
   name: redis-cache
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: store
-  replicas: 2
+
   template:
     metadata:
       labels:
         app: store
     spec:
       affinity:
-        podAffinity:
+        nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
+            nodeSelectorTerms:
+            - matchExpressions:
               - key: zone
-                operator: notIn
+                operator: NotIn
                 values:
                 - zone-a
-                
-            topologyKey: "kubernetes.io/hostname"
-      containers:
+
+    containers:
       - name: redis-server
         image: redis:3.2-alpine
