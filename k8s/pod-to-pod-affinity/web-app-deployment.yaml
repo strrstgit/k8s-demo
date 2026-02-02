@@ -3,33 +3,34 @@ kind: Deployment
 metadata:
   name: web-server
 spec:
-  replicas: 0
   selector:
     matchLabels:
       app: web-store
-
+  replicas: 1
   template:
     metadata:
       labels:
         app: web-store
     spec:
       affinity:
-        nodeAffinity:
+        podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: zone
+          - labelSelector:
+              matchExpressions:
+              - key: app
                 operator: In
                 values:
-                - zone-a
+                - web-store
+            topologyKey: "kubernetes.io/hostname"
         podAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app: store
-              topologyKey: kubernetes.io/hostname
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - store
+            topologyKey: "kubernetes.io/hostname"
       containers:
       - name: web-app
-        image: nginx:1.15-alpine
+        image: nginx:1.16-alpine
